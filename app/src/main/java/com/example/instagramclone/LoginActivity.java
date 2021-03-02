@@ -13,28 +13,73 @@ import android.widget.Toast;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText Username;
     EditText Password;
     Button btnlogin;
-    Button btnsignup;       //handle sign up later
+    Button btnsignup;
+    Button createacct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         if (ParseUser.getCurrentUser()!=null){  //if someone exits app and is still logged in, go into app
             goMainActivity();
+            Toast.makeText(LoginActivity.this,"Logged in as " + ParseUser.getCurrentUser(),Toast.LENGTH_LONG).show();
         }
 
         Username=findViewById(R.id.username);
         Password=findViewById(R.id.password);
         btnlogin=findViewById(R.id.LoginButton);
         btnsignup=findViewById(R.id.SignUpButton);  //handle later
+        createacct=findViewById(R.id.createbutton);
+
+        btnsignup.setOnClickListener(new View.OnClickListener() {   //I added this whole block
+            @Override
+            public void onClick(View v) {
+                createacct.setVisibility(View.VISIBLE);
+                btnlogin.setVisibility(View.INVISIBLE);
+                btnsignup.setVisibility(View.INVISIBLE);
+
+                createacct.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        ParseUser user = new ParseUser();
+                        // Set core properties
+                        user.setUsername(Username.getText().toString());
+                        user.setPassword(Password.getText().toString());
+                        //user.setEmail("email@example.com");
+                        // Set custom properties
+                        //user.put("phone", "650-253-0000");
+                        // Invoke signUpInBackground
+                        user.signUpInBackground(new SignUpCallback() {
+                            public void done(ParseException e) {
+                                if (e == null) {
+                                    Toast.makeText(LoginActivity.this,"Account Created",Toast.LENGTH_LONG).show();
+                                    goMainActivity();
+                                }
+                                else {
+                                    Toast.makeText(LoginActivity.this,"Could not create account",Toast.LENGTH_LONG).show();
+
+                                }
+                            }
+                        });
+
+                    }
+                });
+
+
+            }
+        });
+
+
 
 
         btnlogin.setOnClickListener(new View.OnClickListener() {

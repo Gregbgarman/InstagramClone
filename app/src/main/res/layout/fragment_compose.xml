@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ComposeFragment">
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:visibility="invisible"
+        android:layout_width="466dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="124dp"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textPersonName"
+        android:textSize="26sp" />
+
+
+    <Button
+        android:id="@+id/SubmitButton"
+        android:visibility="invisible"
+        android:layout_width="119dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="129dp"
+        android:layout_marginBottom="67dp"
+        android:backgroundTint="#A03AB7"
+        tools:text="SUBMIT" />
+
+    <ImageView
+        android:id="@+id/theimage"
+        android:layout_width="329dp"
+        android:layout_height="419dp"
+        android:layout_above="@+id/etDescription"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="65dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/logoutbutton"
+        android:visibility="invisible"
+        android:layout_width="171dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="143dp"
+        android:backgroundTint="@color/black"
+        android:text="LOGOUT"/>
+
+    <Button
+        android:id="@+id/PicButton"
+        android:layout_width="122dp"
+        android:layout_height="56dp"
+        android:layout_below="@+id/etDescription"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="-38dp"
+        android:layout_marginTop="7dp"
+        android:backgroundTint="@color/white"
+        android:textAlignment="center"
+         />
+
+
+
+
+
+</RelativeLayout>
